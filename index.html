@@ -35,7 +35,7 @@
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
+            bottom: 6;
             background: rgba(0, 0, 0,);
             transparency: (0.4);
             backdrop-filter: blur(10px); /* Blurry background effect */
@@ -68,7 +68,7 @@
                 if (currentText.length < words[wordIndex].length) {
                     currentText += words[wordIndex].charAt(currentText.length);
                     document.title = `RgY Is ${currentText}`;
-                    setTimeout(typeTitle, 10); // Faster typing speed
+                    setTimeout(typeTitle, 600); // Faster typing speed
                 } else {
                     typing = false;
                     setTimeout(() => {
