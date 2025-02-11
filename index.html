@@ -21,7 +21,7 @@
             color: white;
             font-size: 2rem;
             font-weight: bold;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
             padding: 20px;
             border-radius: 10px;
             cursor: pointer;
@@ -37,25 +37,25 @@
     </video>
     <script>
         // Typewriter effect for the title
-        const titles = ["RgY is autistic", "RgY is dumb", "RgY is stupid", "RgY is a loser", "RgY is worthless"];
-        let titleIndex = 0;
+        const words = ["autistic", "dumb", "stupid", "loser", "worthless"];
+        let wordIndex = 0;
         let currentText = "";
         let typing = true;
         
         function typeTitle() {
             if (typing) {
-                if (currentText.length < titles[titleIndex].length) {
-                    currentText += titles[titleIndex].charAt(currentText.length);
+                if (currentText.length < words[wordIndex].length) {
+                    currentText += words[wordIndex].charAt(currentText.length);
                     document.title = currentText;
-                    setTimeout(typeTitle, 100); // Adjust typing speed
+                    setTimeout(typeTitle, 50); // Faster typing speed
                 } else {
                     typing = false;
                     setTimeout(() => {
                         currentText = "";
-                        titleIndex = (titleIndex + 1) % titles.length; // Cycle through titles
+                        wordIndex = (wordIndex + 1) % words.length; // Cycle through words
                         typing = true;
                         typeTitle();
-                    }, 1000); // Time before re-typing
+                    }, 1500); // Time to hold before re-typing
                 }
             }
         }
