@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUGG!!</title>
+    <title>RgY is autistic</title>
     <style>
         * { margin: 0; padding: 0; overflow: hidden; }
         body { background: black; display: flex; align-items: center; justify-content: center; height: 100vh; }
@@ -12,28 +13,32 @@
             width: 100vw; 
             height: 100vh;
             object-fit: cover;
+            display: none;
         }
-        .title {
+        .warning {
             position: absolute;
-            top: 10%;
-            width: 100%;
             text-align: center;
+            color: white;
             font-size: 2rem;
             font-weight: bold;
-            color: white;
-            animation: fadeInOut 5s infinite;
-        }
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1); }
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="title">Welcome to My Video Page</div>
-    <video autoplay loop muted>
+    <div class="warning" onclick="enterSite()">⚠️ Warning: This video contains flashing lights. Click to enter. ⚠️</div>
+    <video id="video" autoplay loop muted>
         <source src="202501180904(1).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    <script>
+        function enterSite() {
+            document.querySelector('.warning').style.display = 'none';
+            document.getElementById('video').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
