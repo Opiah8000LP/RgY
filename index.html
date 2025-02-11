@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RgY is autistic</title>
+    <title>RgY Is autistic</title>
     <style>
         * { margin: 0; padding: 0; overflow: hidden; }
         body { background: black; display: flex; align-items: center; justify-content: center; height: 100vh; }
+
         video { 
             position: absolute;
             width: 100vw; 
@@ -15,38 +16,57 @@
             display: none;
             pause: true;
         }
+
         .warning {
             position: absolute;
             text-align: center;
             color: white;
             font-size: 2rem;
             font-weight: bold;
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
             padding: 20px;
             border-radius: 10px;
             cursor: pointer;
-            transition: opacity 1s ease;
+            z-index: 10;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .warning-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px); /* Blurry background effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            transition: backdrop-filter 1s ease;
         }
     </style>
 </head>
 <body>
-    <div class="warning" onclick="enterSite()">⚠️ Warning: This video contains flashing lights. Click to enter. ⚠️</div>
+    <div class="warning-container">
+        <div class="warning" onclick="enterSite()">⚠️ Warning: This video contains flashing lights. Click to enter. ⚠️</div>
+    </div>
     <video id="video" autoplay loop muted>
         <source src="202501180904(1).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
     <script>
         // Typewriter effect for the title
-        const words = ["autistic", "dumb", "stupid", "loser", "worthless"];
+        const words = ["stupid", "worthless", "a sweetheart", "confused", "unique"];
         let wordIndex = 0;
         let currentText = "";
         let typing = true;
-        
+
         function typeTitle() {
             if (typing) {
                 if (currentText.length < words[wordIndex].length) {
                     currentText += words[wordIndex].charAt(currentText.length);
-                    document.title = currentText;
+                    document.title = `RgY Is ${currentText}`;
                     setTimeout(typeTitle, 50); // Faster typing speed
                 } else {
                     typing = false;
@@ -65,13 +85,21 @@
 
         // Video and warning logic
         function enterSite() {
-            document.querySelector('.warning').style.opacity = '0';
-            document.querySelector('.warning').style.pointerEvents = 'none';
+            const warningText = document.querySelector('.warning');
+            const warningContainer = document.querySelector('.warning-container');
+
+            // Slide text down and unblur the background
+            warningText.style.transform = 'translateY(100px)';
+            warningContainer.style.backdropFilter = 'blur(0px)';
+            warningContainer.style.opacity = '0';
+
+            // Hide warning after animation
+            setTimeout(() => {
+                warningContainer.style.display = 'none';
+            }, 1000);
+
             document.getElementById('video').style.display = 'block';
             document.getElementById('video').play();
-            setTimeout(() => {
-                document.querySelector('.warning').style.display = 'none';
-            }, 1000);
         }
     </script>
 </body>
